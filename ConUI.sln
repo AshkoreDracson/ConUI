@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26127.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConUI", "ConUI\ConUI.csproj", "{37830E97-C2AF-4BC5-A3A2-8CD18A20F97C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConUI Test", "ConUI Test\ConUI Test.csproj", "{19DD6EA3-94DA-48B5-8E8F-F7150E68FDB7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConReddit", "ConReddit\ConReddit.csproj", "{82AB86DA-185E-4851-878B-A7B3203071D5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{37830E97-C2AF-4BC5-A3A2-8CD18A20F97C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37830E97-C2AF-4BC5-A3A2-8CD18A20F97C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37830E97-C2AF-4BC5-A3A2-8CD18A20F97C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37830E97-C2AF-4BC5-A3A2-8CD18A20F97C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19DD6EA3-94DA-48B5-8E8F-F7150E68FDB7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19DD6EA3-94DA-48B5-8E8F-F7150E68FDB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19DD6EA3-94DA-48B5-8E8F-F7150E68FDB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19DD6EA3-94DA-48B5-8E8F-F7150E68FDB7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82AB86DA-185E-4851-878B-A7B3203071D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82AB86DA-185E-4851-878B-A7B3203071D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82AB86DA-185E-4851-878B-A7B3203071D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82AB86DA-185E-4851-878B-A7B3203071D5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
