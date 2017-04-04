@@ -91,27 +91,15 @@ namespace ConUI.Controls
             {
                 CaretPosition++;
             }
-            //else if (e.Key == Key.V && e.Control)
-            //{
-            //    string clipText = System.Windows.Clipboard.GetText();
-            //    if (Text.Length >= MaxLength) return;
-            //    int remainingLength = (MaxLength - Text.Length);
-
-            //    if (remainingLength > clipText.Length)
-            //        remainingLength = clipText.Length;
-
-            //    Text = Text.Insert(CaretPosition, clipText.Substring(0, remainingLength));
-            //    CaretPosition += remainingLength;
-            //}
         }
 
-        public override ColoredChar[,] Draw(ColoredChar[,] buffer)
+        public override void Draw(ref ColoredChar[,] buffer)
         {
             if (!Visible)
             {
                 ColoredChar cc = new ColoredChar('\0', Parent.ForeColor, Parent.BackColor);
                 buffer.Populate(cc);
-                return buffer;
+                return;
             }
 
             bool showPlaceholder = (!Focused && Placeholder.Length > 0 && Text.Length <= 0);
@@ -156,8 +144,6 @@ namespace ConUI.Controls
                     buffer[x, y] = new ColoredChar(chr, fForeColor, fBackColor);
                 }
             }
-
-            return buffer;
         }
     }
 }

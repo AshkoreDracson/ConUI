@@ -34,7 +34,8 @@ namespace ConUI
                 {
                     Point pos = control.Position;
                     Size size = control.Size;
-                    ColoredChar[,] controlBuffer = control.Draw(new ColoredChar[size.Width, size.Height]);
+                    ColoredChar[,] controlBuffer = new ColoredChar[size.Width, size.Height];
+                    control.Draw(ref controlBuffer);
 
                     for (int y = 0; y < size.Height; y++)
                     {

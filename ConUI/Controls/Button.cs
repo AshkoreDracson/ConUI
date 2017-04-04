@@ -16,13 +16,13 @@ namespace ConUI.Controls
             Text = text;
         }
 
-        public override ColoredChar[,] Draw(ColoredChar[,] buffer)
+        public override void Draw(ref ColoredChar[,] buffer)
         {
             if (!Visible)
             {
                 ColoredChar cc = new ColoredChar('\0', Parent.ForeColor, Parent.BackColor);
                 buffer.Populate(cc);
-                return buffer;
+                return;
             }
 
             Color4 fBackColor = BackColor;
@@ -78,8 +78,6 @@ namespace ConUI.Controls
                     buffer[x, y] = c;
                 }
             }
-
-            return buffer;
         }
     }
 }

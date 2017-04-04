@@ -61,18 +61,18 @@ namespace ConUI.Controls
             MouseWheel += ScrollableLabel_MouseWheel;
         }
 
-        public override ColoredChar[,] Draw(ColoredChar[,] buffer)
+        public override void Draw(ref ColoredChar[,] buffer)
         {
             if (!Visible)
             {
                 ColoredChar cc = new ColoredChar('\0', Parent.ForeColor, Parent.BackColor);
                 buffer.Populate(cc);
-                return buffer;
+                return;
             }
 
             string t = Text;
             if (t.Length <= 0)
-                return buffer;
+                return;
 
             int i = RenderYOffset * Size.Width;
 
@@ -104,8 +104,6 @@ namespace ConUI.Controls
                     }
                 }
             }
-
-            return buffer;
         }
 
         private void ScrollableLabel_MouseWheel(OpenTK.Input.MouseWheelEventArgs e)

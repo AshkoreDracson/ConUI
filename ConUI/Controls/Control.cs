@@ -143,7 +143,7 @@ namespace ConUI.Controls
             Name = name;
         }
 
-        public abstract ColoredChar[,] Draw(ColoredChar[,] buffer);
+        public abstract void Draw(ref ColoredChar[,] buffer);
 
         public void Focus()
         {
