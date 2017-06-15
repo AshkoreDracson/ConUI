@@ -8,10 +8,7 @@ namespace ConUI.Controls
 
         public int RenderYOffset
         {
-            get
-            {
-                return _renderYOffset;
-            }
+            get => _renderYOffset;
             set
             {
                 int maxY = RealHeight - Size.Height;
@@ -39,7 +36,7 @@ namespace ConUI.Controls
 
                     for (int i = 0; i < lines.Length; i++)
                     {
-                        int increment = (lines[i].Length / (Size.Width + 1));
+                        int increment = (lines.Length / (Size.Width + 1));
                         height += increment;
                     }
 

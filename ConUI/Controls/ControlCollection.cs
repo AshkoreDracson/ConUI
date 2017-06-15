@@ -14,10 +14,7 @@ namespace ConUI.Controls
             Parent = parent;
         }
 
-        public Control this[int index]
-        {
-            get { return _controls[index]; }
-        }
+        public Control this[int index] => _controls[index];
 
         public void Add(Control control)
         {

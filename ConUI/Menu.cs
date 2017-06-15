@@ -104,15 +104,12 @@ namespace ConUI
 
             MouseButtonEventArgs e2 = new MouseButtonEventArgs(e.X - (topMostControl.Position.X * 8), e.Y - (topMostControl.Position.Y * 12), e.Button, e.IsPressed);
 
-            if (topMostControl != null)
-            {
-                if (FocusedControl != null)
-                    FocusedControl.Focused = false;
+            if (FocusedControl != null)
+                FocusedControl.Focused = false;
 
-                FocusedControl = topMostControl;
-                topMostControl.Focused = true;
-                topMostControl.PerformMouseUp(e2);
-            }
+            FocusedControl = topMostControl;
+            topMostControl.Focused = true;
+            topMostControl.PerformMouseUp(e2);
         }
         public void PerformMouseWheel(MouseWheelEventArgs e)
         {

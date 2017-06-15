@@ -33,10 +33,7 @@ namespace ConUI.Controls
 
         public Color4 BackColor
         {
-            get
-            {
-                return _backColor;
-            }
+            get => _backColor;
             set
             {
                 _backColor = value;
@@ -45,10 +42,7 @@ namespace ConUI.Controls
         }
         public Color4 ForeColor
         {
-            get
-            {
-                return _foreColor;
-            }
+            get => _foreColor;
             set
             {
                 _foreColor = value;

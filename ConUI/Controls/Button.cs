@@ -51,10 +51,10 @@ namespace ConUI.Controls
                 for (int x = 0; x < Size.Width; x++)
                 {
                     char chr = '\0';
-                    int index = 0;
 
                     if (y == yMiddle)
                     {
+                        var index = 0;
                         switch (TextAlign)
                         {
                             case TextAlignement.Left:

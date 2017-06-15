@@ -1,9 +1,14 @@
 ﻿using OpenTK.Graphics;
 using OpenTK.Input;
+using System;
+using System.Linq;
+
 namespace ConUI.Controls
 {
-    public class TextBox : Control
+    public class DateBox : Control
     {
+        private static char[] validChars = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '/', '.', ':' };
+
         public Color4 CaretBackColor { get; set; } = Color4.White;
         public Color4 CaretForeColor { get; set; } = Color4.Black;
         private int _caretPosition;
@@ -46,23 +51,31 @@ namespace ConUI.Controls
         private int TextRenderLength => Size.Width - 2;
         private int renderOffset = 0;
 
-        public TextBox(string name) : base(name)
+        public DateTime? Date
         {
-            PlaceholderBackColor = BackColor;
-            PlaceholderForeColor = Color4.DarkGray;
+            get
+            {
+                if (DateTime.TryParse(Text, out DateTime date))
+                    return date;
 
-            KeyDown += TextBox_KeyDown;
-            KeyPress += TextBox_KeyPress;
+                return null;
+            }
         }
 
-        private void TextBox_KeyPress(OpenTK.KeyPressEventArgs e)
+        public DateBox(string name) : base(name)
         {
-            if (Text.Length >= MaxLength) return;
+            KeyDown += DateBox_KeyDown;
+            KeyPress += DateBox_KeyPress;
+        }
+
+        private void DateBox_KeyPress(OpenTK.KeyPressEventArgs e)
+        {
+            if (Text.Length >= MaxLength || !validChars.Contains(e.KeyChar)) return;
             Text = Text.Insert(CaretPosition, e.KeyChar.ToString());
             CaretPosition++;
         }
 
-        private void TextBox_KeyDown(KeyboardKeyEventArgs e)
+        private void DateBox_KeyDown(KeyboardKeyEventArgs e)
         {
             if (e.Key == Key.BackSpace)
             {
