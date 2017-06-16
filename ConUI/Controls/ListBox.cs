@@ -1,9 +1,12 @@
 ﻿using OpenTK.Graphics;
+using System.Collections.Generic;
 
 namespace ConUI.Controls
 {
-    public class ScrollableLabel : Control
+    public class ListBox : Control
     {
+        public List<object> Items { get; } = new List<object>();
+
         private int _renderYOffset = 0;
 
         public int RenderYOffset
@@ -11,7 +14,7 @@ namespace ConUI.Controls
             get => _renderYOffset;
             set
             {
-                int maxY = RealHeight - Size.Height;
+                int maxY = Items.Count - Size.Height;
 
                 if (maxY < 0)
                     maxY = 0;
@@ -24,37 +27,10 @@ namespace ConUI.Controls
                 _renderYOffset = value;
             }
         }
-        public int RealHeight
+
+        public ListBox(string name) : base(name)
         {
-            get
-            {
-                if (Text.Contains("\n"))
-                {
-
-                    string[] lines = Text.Split('\n');
-                    int height = lines.Length;
-
-                    for (int i = 0; i < lines.Length; i++)
-                    {
-                        int increment = (lines.Length / (Size.Width + 1));
-                        height += increment;
-                    }
-
-                    return height;
-                }
-                else
-                {
-                    double height = (double)Text.Length / Size.Width;
-                    return (int)System.Math.Ceiling(height);
-                }
-            }
-        }
-        public string Text { get; set; }
-
-        public ScrollableLabel(string name, string text) : base(name)
-        {
-            Text = text;
-            MouseWheel += ScrollableLabel_MouseWheel;
+            MouseWheel += ListBox_MouseWheel;
         }
 
         public override void Draw(ref ColoredChar[,] buffer)
@@ -66,12 +42,6 @@ namespace ConUI.Controls
                 return;
             }
 
-            string t = Text;
-            if (t.Length <= 0)
-                return;
-
-            int i = RenderYOffset * Size.Width;
-
             Color4 fForeColor = ForeColor;
 
             if (!Enabled)
@@ -81,17 +51,12 @@ namespace ConUI.Controls
 
             for (int y = 0; y < Size.Height; y++)
             {
+                string s = y + RenderYOffset < Items.Count ? Items[y + RenderYOffset].ToString() : null;
                 for (int x = 0; x < Size.Width; x++)
                 {
-                    if (i < Text.Length)
+                    if (s != null && x < s.Length)
                     {
-                        char c = Text[i++];
-
-                        if (c == '\n')
-                        {
-                            break;
-                        }
-
+                        char c = s[x];
                         buffer[x, y] = new ColoredChar(c, fForeColor, BackColor);
                     }
                     else
@@ -102,7 +67,7 @@ namespace ConUI.Controls
             }
         }
 
-        private void ScrollableLabel_MouseWheel(OpenTK.Input.MouseWheelEventArgs e)
+        private void ListBox_MouseWheel(OpenTK.Input.MouseWheelEventArgs e)
         {
             if (e.Delta < 0)
             {

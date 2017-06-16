@@ -6,11 +6,11 @@ namespace ConUI_Test
 {
     class Program
     {
-        public static Console Console { get; private set; } = new Console(30, 80, "ConUI Test");
+        static Console Console { get; } = new Console(30, 80, "ConUI Test");
         static Menu mainMenu = new Menu("Main Menu");
 
         [System.STAThread]
-        static void Main(string[] args)
+        static void Main()
         {
             InitializeMenu();
             Console.StartingMenu = mainMenu;
@@ -22,21 +22,24 @@ namespace ConUI_Test
             mainMenu.BackColor = Color4.DarkBlue;
 
             mainMenu.Controls.AddRange(
-                new Label("lb1", "Name") { Size = new Size(4, 1), Position = new Point(0, 1) },
-                new TextBox("tb1") { Size = new Size(75, 1), Position = new Point(5, 1) },
+                new Label("lb1", "Text To Add") { Size = new Size(11, 1), Position = new Point(0, 1) },
+                new TextBox("tb1") { Size = new Size(68, 1), Position = new Point(12, 1) },
 
-                new Label("lb2", "Age") { Size = new Size(3, 1), Position = new Point(0, 3) },
-                new TextBox("tb2") { Size = new Size(75, 1), Position = new Point(5, 3) },
-
-                new Label("lb3", "DOB") { Size = new Size(3, 1), Position = new Point(0, 4) },
-                new DateBox("tb3") { Size = new Size(75, 1), Position = new Point(5, 4) },
-
-                new CheckBox("cb1", "Male") { Size = new Size(40, 1), Position = new Point(0, 6) },
-                new CheckBox("cb1", "Female") { Size = new Size(40, 1), Position = new Point(40, 6) },
-
-                new Button("b1", "Sign up") { Size = new Size(40, 1), Position = new Point(0, 8) },
-                new Button("b2", "Cancel") { Size = new Size(40, 1), Position = new Point(40, 8) }
+                new Button("b1", "Add") { Size = new Size(80, 1), Position = new Point(0, 2) },
+                new ListBox("listbox1") { Size = new Size(80, 20), Position = new Point(0, 4) }
                 );
+
+            Button b1 = mainMenu.Controls["b1"] as Button;
+            ListBox listbox1 = mainMenu.Controls["listbox1"] as ListBox;
+            TextBox tb1 = mainMenu.Controls["tb1"] as TextBox;
+
+            if (b1 != null && listbox1 != null && tb1 != null)
+            {
+                b1.Click += () =>
+                {
+                    listbox1.Items.Add($"{listbox1.Items.Count + 1}) {tb1.Text}");
+                };
+            }
         }
     }
 }

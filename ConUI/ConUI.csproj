@@ -61,6 +61,7 @@
     <Compile Include="Controls\Control.cs" />
     <Compile Include="Controls\ControlCollection.cs" />
     <Compile Include="Controls\DateBox.cs" />
+    <Compile Include="Controls\ListBox.cs" />
     <Compile Include="Controls\Panel.cs" />
     <Compile Include="Controls\ScrollableLabel.cs" />
     <Compile Include="Controls\TextBox.cs" />

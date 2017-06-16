@@ -15,6 +15,7 @@ namespace ConUI.Controls
         }
 
         public Control this[int index] => _controls[index];
+        public Control this[string name] => Get<Control>(name);
 
         public void Add(Control control)
         {
