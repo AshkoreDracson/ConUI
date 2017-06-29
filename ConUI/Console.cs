@@ -71,6 +71,16 @@ namespace ConUI
 
             ShownMenus.Push(menu);
         }
+        public void SwitchMenu(Menu menu)
+        {
+            if (menu == null)
+                return;
+
+            if (ShownMenus.Count > 0)
+                ShownMenus.Pop();
+
+            ShownMenus.Push(menu);
+        }
         public void HideMenu()
         {
             if (ShownMenus.Count > 0)
